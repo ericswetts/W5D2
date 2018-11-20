@@ -1,0 +1,21 @@
+/* PHASE 2: Notifications */
+.badge {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  margin: 0 0 0 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.badge p {
+  vertical-align: middle;
+  padding-top: 2px;
+}
+
+.header-list a {
+  vertical-align: middle;
+}
