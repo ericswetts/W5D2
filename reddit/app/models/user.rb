@@ -2,11 +2,19 @@ class User < ApplicationRecord
   
   validates :username, :session_token, presence: true, uniqueness: true
   validates :password_digest, presence: true
-  validates :password, length:{minumum: 6, allow_nil: true}
+  validates :password, length: {minimum: 6, allow_nil: true}
   
   attr_reader :password 
   
   before_validation :ensure_session_token
+  
+  has_many :subs,
+    foreign_key: :moderator_id,
+    class_name: :Sub
+    
+  has_many :posts,
+    foreign_key: :author_id, 
+    class_name: :Post
   
   def self.find_by_credentials(username, password)
     user = User.find_by(username:username)
