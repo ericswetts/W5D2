@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :require_login
   
   def show
-    @post = Post.find_by(params[:id])
+    @post = Post.find(params[:id])
     render :show
   end
 
@@ -24,12 +24,12 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find_by(params[:id])
+    @post = Post.find(params[:id])
     render :edit
   end
 
   def update
-    @post = current_user.posts.find_by(params[:id])
+    @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
       redirect_to post_url(@post)
     else
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find_by(params[:id])
+    @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_url
   end

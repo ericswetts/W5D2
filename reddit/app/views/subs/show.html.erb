@@ -1,2 +1,32 @@
-<h1>Subs#show</h1>
-<p>Find me in app/views/subs/show.html.erb</p>
+<h2><%= @sub.title %></h2>
+
+<h4>Description</h4>
+
+ <%= @sub.description  %> 
+ <br>
+<a href="<%= new_post_url %>">Make New Post</a>
+<ul>
+<% @sub.posts.each do |post| %>
+  <li> <a href="<%= post_url(post) %>"><%= post.title %></a></li>
+<% end %>
+</ul>
+
+<h2>New Post</h2>
+ <form class="" action="<%= posts_url %>" method="post">
+   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+   <input type="hidden" name="post[sub_id]" value="<%= @sub.id %>">
+   
+   <label>Title
+     <input type="text" name="post[title]" value="">
+   </label><br>
+   
+   <label>URL
+     <input type="text" name="post[url]" value="">
+   </label><br>
+   
+   <label>Content
+     <textarea name="post[content]" rows="8" cols="80"></textarea>
+   </label><br>
+   
+   <input type="submit" name="" value="Post that Shiz">
+ </form>

@@ -10,6 +10,28 @@
   </head>
 
   <body>
+    
+    <a href="<%= subs_url %>">Take me home</a>
+    <br>
+    
+    <% if logged_in? %>
+    <%= current_user.username %>
+    <br>
+    <span style="color: purple; font-weight: 700;"><a href="<%= new_sub_url %>">Create a sub!</a></span>
+    <br>
+    
+    <form class="" action="<%= session_url %>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" name="" value="Sign Out">
+    </form>
+    <% else %>
+      <a href="<%= new_session_url %>">Sign In</a>
+      <a href="<%= new_user_url %>">Sign Up</a>
+    <% end %>
     <%= yield %>
+    
+  <%= flash[:errors] %>
+  <%= flash.now[:errors] %>
   </body>
 </html>

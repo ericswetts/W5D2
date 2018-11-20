@@ -57,6 +57,6 @@ class SubsController < ApplicationController
   
   def require_moderator
     @sub = current_user.subs.find_by(id: params[:id])
-    redirect_to new_session_url unless @sub
+    # redirect_to new_session_url unless @sub
   end
 end

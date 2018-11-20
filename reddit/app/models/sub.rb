@@ -6,4 +6,6 @@ class Sub < ApplicationRecord
     foreign_key: :moderator_id, 
     class_name: :User
     
+  has_many :posts
+    
 end
