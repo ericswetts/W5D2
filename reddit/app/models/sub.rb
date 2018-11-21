@@ -10,7 +10,7 @@ class Sub < ApplicationRecord
 
   has_many :posts, 
     through: :post_subs,
-    source: :posts
+    source: :post
   
     
 end
